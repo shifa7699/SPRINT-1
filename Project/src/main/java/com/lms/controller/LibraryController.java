@@ -2,11 +2,7 @@ package com.lms.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lms.dto.LibraryValidation;
 import com.lms.entity.MyLibrary;
 import com.lms.service.MyServices;
 
@@ -39,8 +34,8 @@ public class LibraryController { // THIS CLASS IS USED TO CREATE REST API
 
 	// MAPPING USED TO ADD A NEW BOOK INTO THE LIBRARY
 	@PostMapping("/LibrarybooksAvailable")
-	public ResponseEntity<MyLibrary> saveEmployee(@RequestBody @Valid LibraryValidation libraryValidation, MyLibrary mylib) {
-		return new ResponseEntity<>(myservices.createLibrary(libraryValidation, mylib), HttpStatus.CREATED);
+	public MyLibrary addABook(@RequestBody MyLibrary mylib) {
+		return myservices.createLibrary(mylib);
 	}
 
 	// MAPPING USED TO UPDATE AN EXISTING BOOK PRESENT IN THE LIBRARY
@@ -51,7 +46,7 @@ public class LibraryController { // THIS CLASS IS USED TO CREATE REST API
 
 	// MAPPING USED TO DELETE A EXISTING BOOK FROM THE LIBRARY THROUGH BOOKID
 	@DeleteMapping("/LibrarybooksAvailable/{id}")
-	public String deleteABook(int id) {
+	public String deleteABook(@PathVariable int id) {
 		myservices.deleteABook(id);
 		return "Book id " + id + " has been deleted!!!";
 	}

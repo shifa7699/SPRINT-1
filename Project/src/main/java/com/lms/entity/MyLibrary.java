@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Builder;
 
 @Entity
 @Table(name = "Library") //TABLE NAMED 'LIBRARY' WILL BE CREATED IN DATABASE

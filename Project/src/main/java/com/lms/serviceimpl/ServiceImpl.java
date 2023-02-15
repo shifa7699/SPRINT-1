@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lms.dto.LibraryValidation;
 import com.lms.entity.MyLibrary;
 import com.lms.repository.LibraryRepository;
 import com.lms.service.MyServices;
@@ -16,8 +15,7 @@ public class ServiceImpl implements MyServices {
 	LibraryRepository libraryRepository; 
 // IMPLEMENTED METHODS OF MYSERVICES CLASS
 	@Override
-	public MyLibrary createLibrary(LibraryValidation libraryValidation, MyLibrary mylib) {
-		System.out.println(mylib.getBname()+""+mylib.getAname());
+	public MyLibrary createLibrary(MyLibrary mylib) {
 		return libraryRepository.save(mylib);	
 	}
 
